@@ -1,14 +1,27 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from config import Config
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aksorn.db'
+# สร้าง instance ของ SQLAlchemy และ LoginManager
+db = SQLAlchemy()
+login_manager = LoginManager()
+login_manager.login_view = "auth.login"
 
-db = SQLAlchemy(app)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'  # กำหนดให้ต้องล็อกอินก่อนเข้าบางหน้า
+    # ผูก database และ login manager กับแอป
+    db.init_app(app)
+    login_manager.init_app(app)
 
-from aksorn import routes  # นำเข้า routes เพื่อให้ Flask รู้จัก
+    # Import และ register blueprint
+    from aksorn.auth import auth_bp
+    from aksorn.routes import main_bp
+
+    app.register_blueprint(auth_bp, url_prefix="/auth")
+    app.register_blueprint(main_bp)
+
+    return app
+
