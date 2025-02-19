@@ -7,8 +7,7 @@ app_routes = Blueprint('main', __name__)
 
 @app_routes.route('/')
 def home():
-    return render_template('index.html')
-
+    return redirect(url_for("app_routes.index"))
 # @app_routes.route('/dashboard')
 # def dashboard():
 #     return render_template('dashboard.html')

@@ -5,7 +5,7 @@ from routes import app_routes
 from flask_migrate import Migrate
 from models import db
 app = Flask(__name__)
-app.config.from_object(Config)
+# app.config.from_object(Config)
 
 # db.init_app(app)
 # app.register_blueprint(app_routes)
