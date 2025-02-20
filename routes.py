@@ -1,8 +1,8 @@
-from models import db
+from datetime import datetime
 from flask import Blueprint, render_template, request, redirect, url_for , flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user , logout_user , login_required , current_user
-from models import User , Book
+from models import User , Book ,db
 
 app_routes = Blueprint('main', __name__)
 
@@ -29,8 +29,8 @@ def register():
             flash('ชื่อนี้ถูกใช้แล้ว', 'danger')
             return redirect(url_for('main.register'))
         
-        check_password  = generate_password_hash(password , methood = 'pbkdf2:sha256')
-        new_password = User(username = username,password = hashed_password)
+        hashed_password  = generate_password_hash(password , methood = 'pbkdf2:sha256')
+        new_user = User(username = username,password = hashed_password)
 
         try :
             db.session.add(new_user)
@@ -40,7 +40,7 @@ def register():
         except Exception as e:
             db.session.rollback()
             flash('เกิดข้อผิดพลาด Pls re login','danger')
-            
+
 
 
 
