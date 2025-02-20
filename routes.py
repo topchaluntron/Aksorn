@@ -28,6 +28,9 @@ def register():
         if user :
             flash('ชื่อนี้ถูกใช้แล้ว', 'danger')
             return redirect(url_for('main.register'))
-
         
+        check_password  = generate_password_hash(password , methood = 'pbkdf2:sha256')
+        new_password = User(username = username,password = hashed_password)
 
+        try :
+            
