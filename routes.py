@@ -33,4 +33,14 @@ def register():
         new_password = User(username = username,password = hashed_password)
 
         try :
+            db.session.add(new_user)
+            db.session.commit()
+            flash('สมัครสมาชิกสำเร็จ!!!! Please Login', 'success')
+            return redirect(url_for('main.login'))
+        except Exception as e:
+            db.session.rollback()
+            flash('เกิดข้อผิดพลาด Pls re login','danger')
             
+
+
+
