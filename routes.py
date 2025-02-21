@@ -14,9 +14,9 @@ def home():
 def about():
     return render_template('about.html')
 
-@app_routes.route('/register' , methods = ['Get' , 'Post'])
+@app_routes.route('/register' , methods = ['GET' , 'POST'])
 def register():
-    if request.method == 'Post':
+    if request.method == 'POST':
         username = request.form.get('username')
         password =  request.form.get('password')
         
@@ -40,6 +40,27 @@ def register():
         except Exception as e:
             db.session.rollback()
             flash('เกิดข้อผิดพลาด Pls re login','danger')
+
+    return render_template('register.html')
+
+@app_routes.route('login',method = ['GET','POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        psssword = request.form.get('password')
+
+        user = User.query.filter_by(username = username).first()
+        if user and check_password_hash(user.password ,password):
+            login_user(user)
+            flash('เข้าสู่ระบบแล้ว!!' , 'success')
+            return redirect(url_for('main.dashboard'))
+
+        flash('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
+    return render_template('login.html')
+
+
+
+
 
 
 
