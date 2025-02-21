@@ -65,7 +65,12 @@ def logout():
     flash('ออกจากระบบแล้ว','success')
     return redirect(url_for('main.home'))
 
-
+@app_routes.route('/dashboard')
+@login_required
+def dashboard():
+    reading_books = Book.query.filter_by(user_id=current_user.id, is_completed=False).all()
+    completed_books = Book.query.filter_by(user_id=current_user.id, is_completed=True).all()
+    return render_template('dashboard.html', reading_books=reading_books, completed_books=completed_books)
 
 
 
