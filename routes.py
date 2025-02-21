@@ -58,8 +58,12 @@ def login():
         flash('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
     return render_template('login.html')
 
-
-
+@app_routes.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('ออกจากระบบแล้ว','success')
+    return redirect(url_for('main.home'))
 
 
 
