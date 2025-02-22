@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}รีวิวหนังสือ - {{ book.title }}{% endblock %}
+
+{% block content %}
+<div class="form-container review-container">
+    <h2>รีวิวหนังสือ</h2>
+    <h3 class="book-title">{{ book.title }}</h3>
+
+    <form method="POST" action="{{ url_for('main.review_book', book_id=book.id) }}">
+        <div class="form-group rating-group">
+            <label>ให้คะแนน</label>
+            <div class="star-rating">
+                <input type="radio" id="star3" name="rating" value="3" required>
+                <label for="star3" title="3 ดาว - ดีมาก">★</label>
+
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" title="2 ดาว - ดี แต่ไม่กลับมาอ่านอีก">★</label>
+
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" title="1 ดาว - แย่">★</label>
+            </div>
+        </div>
