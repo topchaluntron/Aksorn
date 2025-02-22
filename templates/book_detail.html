@@ -59,3 +59,14 @@
         </div>
         {% endif %}
     </div>
+
+
+    
+    <div class="book-metadata">
+        <p>เริ่มอ่าน: {{ book.created_at.strftime('%d/%m/%Y') }}</p>
+        {% if book.completed_at %}
+        <p>อ่านจบ: {{ book.completed_at.strftime('%d/%m/%Y') }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
