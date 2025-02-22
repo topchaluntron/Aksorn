@@ -5,7 +5,6 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-
 class User(UserMixin , db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
@@ -13,8 +12,6 @@ class User(UserMixin , db.Model):
     password = db.Column(db.String(200), nullable=False)
     book = db.relationship('Book',backref = 'reader' , lazy = True)
     create_at = db.Coloumn(db.DateTime , default = 'reader' , default = datetime.utcnow)
-
-    
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
