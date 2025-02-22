@@ -7,3 +7,44 @@
         <h1>โปรไฟล์ของ {{ current_user.username }}</h1>
         <p class="member-since">สมาชิกตั้งแต่: {{ current_user.created_at.strftime('%d/%m/%Y') }}</p>
     </div>
+
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <i class="fas fa-book"></i>
+            <div class="stat-content">
+                <h3>หนังสือทั้งหมด</h3>
+                <p class="stat-number">{{ total_books }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-check-circle"></i>
+            <div class="stat-content">
+                <h3>อ่านจบแล้ว</h3>
+                <p class="stat-number">{{ completed_books }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-book-reader"></i>
+            <div class="stat-content">
+                <h3>กำลังอ่าน</h3>
+                <p class="stat-number">{{ reading_books }}</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-star"></i>
+            <div class="stat-content">
+                <h3>คะแนนเฉลี่ย</h3>
+                <p class="stat-number">
+                    {% if avg_rating > 0 %}
+                    {{ avg_rating }} / 3
+                    {% else %}
+                    ยังไม่มีคะแนน
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
