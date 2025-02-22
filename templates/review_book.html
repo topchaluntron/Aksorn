@@ -37,3 +37,16 @@
                 <span class="text">แย่</span>
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="review">รีวิว (ไม่จำเป็น)</label>
+            <textarea id="review" name="review" rows="5" placeholder="แบ่งปันความคิดเห็นของคุณ..."></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">บันทึกรีวิว</button>
+            <a href="{{ url_for('main.book_detail', book_id=book.id) }}" class="btn btn-secondary">ยกเลิก</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
