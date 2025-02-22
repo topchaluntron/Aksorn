@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block title %}สมัครสมาชิก{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>สมัครสมาชิก</h2>
+    <form method="POST" action="{{ url_for('main.register') }}">
+        <div class="form-group">
+            <label for="username">ชื่อผู้ใช้</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">สมัครสมาชิก</button>
+    </form>
+    <p style="margin-top: 1rem;">
+        มีบัญชีอยู่แล้ว? <a href="{{ url_for('main.login') }}">เข้าสู่ระบบ</a>
+    </p>
+</div>
+{% endblock %}
