@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}โปรไฟล์{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>โปรไฟล์ของ {{ current_user.username }}</h1>
+        <p class="member-since">สมาชิกตั้งแต่: {{ current_user.created_at.strftime('%d/%m/%Y') }}</p>
+    </div>
