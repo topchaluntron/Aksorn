@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}อักษรคืออะไร{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <h1>อักษรคืออะไร?</h1>
+
+    <div class="about-section">
+        <div class="about-card">
+            <i class="fas fa-book-reader"></i>
+            <h2>ติดตามการอ่าน</h2>
+            <p>บันทึกและติดตามหนังสือที่คุณกำลังอ่านอยู่ พร้อมบันทึกความคืบหน้าในการอ่านแต่ละเล่ม</p>
+        </div>
+
+        <div class="about-card">
+            <i class="fas fa-star"></i>
+            <h2>รีวิวและให้คะแนน</h2>
+            <p>เมื่ออ่านจบ สามารถให้คะแนนและเขียนรีวิวเพื่อจดจำความประทับใจของหนังสือแต่ละเล่ม</p>
+        </div>
+
+        <div class="about-card">
+            <i class="fas fa-chart-line"></i>
+            <h2>ติดตามสถิติ</h2>
+            <p>ดูสถิติการอ่านของคุณ ทั้งจำนวนหนังสือที่อ่านจบ และคะแนนเฉลี่ยที่ให้กับหนังสือ</p>
+        </div>
+    </div>
+
+    <div class="rating-explanation">
+        <h2>ระบบการให้คะแนน</h2>
+        <div class="rating-cards">
+            <div class="rating-card">
+                <div class="stars">★</div>
+                <h3>1 ดาว = แย่</h3>
+                <p>หนังสือที่ไม่น่าประทับใจ</p>
+            </div>
+            <div class="rating-card">
+                <div class="stars">★★</div>
+                <h3>2 ดาว = ดี แต่ไม่กลับมาอ่านอีก</h3>
+                <p>หนังสือที่ดี แต่อ่านครั้งเดียวก็พอ</p>
+            </div>
+            <div class="rating-card">
+                <div class="stars">★★★</div>
+                <h3>3 ดาว = ดีมาก</h3>
+                <p>หนังสือที่ประทับใจมาก อยากกลับมาอ่านซ้ำ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>เริ่มใช้งานวันนี้</h2>
+        <div class="cta-buttons">
+            <a href="{{ url_for('main.register') }}" class="btn btn-primary">สมัครสมาชิก</a>
+            <a href="{{ url_for('main.login') }}" class="btn btn-secondary">เข้าสู่ระบบ</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

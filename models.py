@@ -38,14 +38,3 @@ class Book(db.Model):
             self.review = review_text
             
 
-
-
-
-
-
-class Review(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-
-    rating = db.Column(db.Integer, nullable=False)
-    comment = db.Column(db.Text, nullable=True)
-    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
