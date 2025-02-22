@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}เพิ่มหนังสือ{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>เพิ่มหนังสือใหม่</h2>
+    <form method="POST" action="{{ url_for('main.add_book') }}">
+        <div class="form-group">
+            <label for="title">ชื่อหนังสือ</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="total_pages">จำนวนหน้าทั้งหมด</label>
+            <input type="number" id="total_pages" name="total_pages" min="1" required>
+        </div>
+        <button type="submit" class="btn">เพิ่มหนังสือ</button>
+    </form>
+</div>
+{% endblock %}
