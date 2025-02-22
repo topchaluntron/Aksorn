@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from routes import app_routes
 from flask_migrate import Migrate
-from models import db , User
+from models import db, User
 from flask_login import LoginManager
 
 
