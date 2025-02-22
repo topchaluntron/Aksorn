@@ -16,7 +16,7 @@ db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'main.login'
-login_manager.login_message = 'กรุณาเข้าสู่ระบบก่อนเข้าใช้งาน'
+login_manager.login_message = 'เข้าสู่ระบบ'
 login_manager.login_message_category = 'info'
 
 @login_manager.user_loader
@@ -24,12 +24,11 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 app.register_blueprint(app_routes)
-migrate = Migrate(app,db)
-
+migrate = Migrate(app, db)
 
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True,port = 5000)
+    app.run(debug=True, port=5000)
 
 
