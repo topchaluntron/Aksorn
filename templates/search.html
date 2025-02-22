@@ -4,3 +4,12 @@
 {% block content %}
 <div class="search-container">
     <h1>ค้นหาหนังสือ</h1>
+    
+    <form method="GET" action="{{ url_for('main.search_books') }}" class="search-form">
+        <div class="search-box">
+            <input type="text" name="q" value="{{ query }}" placeholder="ค้นหาชื่อหนังสือ..." required>
+            <button type="submit" class="btn">
+                <i class="fas fa-search"></i> ค้นหา
+            </button>
+        </div>
+    </form>
