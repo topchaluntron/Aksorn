@@ -11,3 +11,69 @@
             </a>
         </div>
     </div>
+
+    
+    <div class="books-section">
+        <div class="reading-books">
+            <h2>
+                <i class="fas fa-book-reader"></i>
+                กำลังอ่าน
+            </h2>
+            {% if reading_books %}
+            <div class="book-grid">
+                {% for book in reading_books %}
+                <div class="book-card">
+                    <h3>{{ book.title }}</h3>
+                    <div class="progress-section">
+                        <div class="progress-bar">
+                            <div class="progress"
+                                style="width: {{ (book.current_page / book.total_pages * 100)|round }}%"></div>
+                        </div>
+                        <p class="progress-text">
+                            {{ book.current_page }} / {{ book.total_pages }} หน้า
+                            ({{ (book.current_page / book.total_pages * 100)|round }}%)
+                        </p>
+                    </div>
+                    <a href="{{ url_for('main.book_detail', book_id=book.id) }}" class="btn">อัพเดตความคืบหน้า</a>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="no-books">ยังไม่มีหนังสือที่กำลังอ่าน <a href="{{ url_for('main.add_book') }}">เพิ่มหนังสือ</a>
+            </p>
+            {% endif %}
+        </div>
+        
+        <div class="completed-books">
+            <h2>
+                <i class="fas fa-check-circle"></i>
+                อ่านจบแล้ว
+            </h2>
+            {% if completed_books %}
+            <div class="book-grid">
+                {% for book in completed_books %}
+                <div class="book-card">
+                    <h3>{{ book.title }}</h3>
+                    {% if book.rating %}
+                    <div class="rating">
+                        {% for i in range(book.rating) %}
+                        <span class="star">★</span>
+                        {% endfor %}
+                    </div>
+                    {% if book.review %}
+                    <p class="review-preview">{{ book.review[:100] }}{% if book.review|length > 100 %}...{% endif %}</p>
+                    {% endif %}
+                    {% else %}
+                    <p class="no-review">ยังไม่ได้รีวิว</p>
+                    {% endif %}
+                    <a href="{{ url_for('main.book_detail', book_id=book.id) }}" class="btn">ดูรายละเอียด</a>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="no-books">ยังไม่มีหนังสือที่อ่านจบ</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
