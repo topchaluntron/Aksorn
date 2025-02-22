@@ -25,7 +25,7 @@
                 ({{ (book.current_page / book.total_pages * 100)|round }}%)
             </p>
         </div>
-        
+
         {% if not book.is_completed %}
         <div class="update-progress">
             <h3>อัพเดตความคืบหน้า</h3>
@@ -39,3 +39,23 @@
             </form>
         </div>
         {% endif %}
+
+        {% if book.is_completed and book.rating %}
+        <div class="review-section">
+            <h2>รีวิวของคุณ</h2>
+            <div class="rating">
+                {% for i in range(book.rating) %}
+                <span class="star">★</span>
+                {% endfor %}
+            </div>
+            {% if book.review %}
+            <p class="review-text">{{ book.review }}</p>
+            {% endif %}
+        </div>
+        {% elif book.is_completed and not book.rating %}
+        <div class="review-prompt">
+            <p>คุณอ่านจบแล้ว! แบ่งปันความคิดเห็นของคุณ</p>
+            <a href="{{ url_for('main.review_book', book_id=book.id) }}" class="btn">เขียนรีวิว</a>
+        </div>
+        {% endif %}
+    </div>
