@@ -2,11 +2,12 @@
 {%block title %}Home{% endblock %}
 
 {% block content %}
-<h1>ยินดีต้อนรับสู่ Aksorn</h1>
-<a href="{{ url_for('app_routes.index')}}"
+<div class = "contaiiner">
+    <h1>ยินดีต้อนรับสู่ Aksorn</h1>
+    <div class="buttons">
+        <a href="{{ url_for('main.login') }}" class="btn">เข้าสู่ระบบ</a>
+        <a href="{{ url_for('main.register') }}" class="btn">สมัครสมาชิก</a>
+    </div>
+</div>
 {% endblock %}
-
-
-
-
 
