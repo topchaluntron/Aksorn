@@ -13,4 +13,15 @@
             {% endif %}
         </div>
     </div>
-    
+
+    <div class="book-info">
+        <div class="progress-section">
+            <h2>ความคืบหน้า</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: {{ (book.current_page / book.total_pages * 100)|round }}%"></div>
+            </div>
+            <p class="progress-text">
+                {{ book.current_page }} / {{ book.total_pages }} หน้า
+                ({{ (book.current_page / book.total_pages * 100)|round }}%)
+            </p>
+        </div>
