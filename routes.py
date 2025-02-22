@@ -197,3 +197,9 @@ def profile():
     if books_with_rating:
         avg_rating = sum(book.rating for book in books_with_rating) / len(books_with_rating)
 
+    return render_template('profile.html',
+                        total_books=total_books,
+                        completed_books=completed_books,
+                        reading_books=reading_books,
+                        avg_rating=round(avg_rating, 1))
+
