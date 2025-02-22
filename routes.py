@@ -63,7 +63,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('ออกจากระบบแล้ว', 'success')
+    flash('ไว้เจอกันใหม่', 'success')
     return redirect(url_for('main.home'))
 
 @app_routes.route('/dashboard')
@@ -105,7 +105,7 @@ def add_book():
             return redirect(url_for('main.dashboard'))
         except:
             db.session.rollback()
-            flash('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง', 'danger')
+            flash('เกิดข้อผิดพลาด เกิดข้อผิดพลาด เกิดข้อผิดพลาด เกิดข้อผิดพลาด ', 'danger')
     
     return render_template('add_book.html')
 
